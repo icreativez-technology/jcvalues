@@ -1,0 +1,64 @@
+:root {
+        --pdf-height: 1080px;
+    }
+
+    #element-to-print {
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 !important;
+        font-family: Poppins, Helvetica, sans-serif;
+        height: var(--pdf-height);
+        width: 783px;
+    }
+
+    #element-to-print p {
+        font-size: 10px;
+    }
+
+    #element-to-print p .text-uppercase {
+        font-size: 9px;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+        margin-top: 0;
+    }
+
+    #element-to-print .footer {
+/*        position: absolute;*/
+        bottom: 0;
+        width: 98%;
+    }
+
+    #element-to-print .footer p {
+        font-size: 10px !important;
+    }
+
+    #element-to-print .c-logo img {
+        margin-top: -10px
+    }
+
+    #element-to-print .c-logo p {
+        background-color: yellow; 
+        margin-top: -5px !important;
+    }
+
+    table {
+        font-size: 9px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+       border: 1px solid rgba(0, 0, 0, 0.125);
+       padding: 3px;
+       text-align: center;
+    }

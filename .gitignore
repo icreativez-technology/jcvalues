@@ -1,0 +1,9 @@
+document-manager/*
+certifcates/*
+bug-screenshots/*
+assets/media/avatars/*
+/document-manager
+/certifcates
+/bug-screenshots
+/assets/media/avatars
+includes/functions.php

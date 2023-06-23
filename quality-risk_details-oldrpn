@@ -1,0 +1,469 @@
+<?php 
+session_start();
+include('includes/functions.php');		
+$_SESSION['Page_Title'] = "Edit Risk";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<?php include('includes/head.php'); ?> <!-- Meta tags + CSS -->
+	
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+				<?php include('includes/aside-menu.php'); ?>
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<?php include('includes/header.php'); ?><!-- Includes Top bar and Responsive Menu -->
+					<!--begin::BREADCRUMBS-->
+					<div class="row breadcrumbs">
+						<div class="col-lg-6">
+							<p><a href="/">Home</a> » <a href="/quality-risk.php">Risk Assesment</a> » <a href="/quality-risk_view_list.php">Risk Assesment List</a> » <?php echo $_SESSION['Page_Title']; ?></p>
+								<!-- MIGAS DE PAN -->
+						</div>
+
+						<div class="col-lg-6">
+							<div class="d-flex justify-content-end">
+											<a href="/quality-risk_mp.php">
+												<button type="button" class="btn btn-light-primary me-3 topbottons">
+													Mitigation Plan
+												</button>
+											</a>				
+							</div>
+						</div>
+					</div>
+					<!--end::BREADCRUMBS-->
+					
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-custom" id="kt_content_container">
+							<div class="card card-flush">
+                         <!-- AQUI AÑADIR EL CONTENIDO  -->
+
+                         	<form class="form">
+							 
+							 <!-- begin::Form Content -->
+							 <div class="card-body">
+									 <div id="custom-section-1">
+										<div class="form-group row">
+										   <div class="col-lg-3">
+										    <label>On Behalf of</label>
+												<select class="form-control" name="on_behalf_of" required>
+													<option value="">Select</option>
+													<option>Employee 1</option>
+													<option>Employee 2</option>
+													<option>Employee 3</option>
+													<option>Employee 4</option>
+												</select>
+										   </div>
+										   <div class="col-lg-3">
+										    <label>Plant</label>
+												<select class="form-control" name="Plant" required>
+													<option value="">Select</option>
+													<option>Plant 1</option>
+													<option>Plant 2</option>
+													<option>Plant 3</option>
+													<option>Plant 4</option>
+												</select>
+										   </div>
+										   <div class="col-lg-3">
+										    <label>Product Group</label>
+												<select class="form-control" name="Product_Group" required>
+													<option value="">Select</option>
+													<option>Product Group 1</option>
+													<option>Product Group 2</option>
+													<option>Product Group 3</option>
+													<option>Product Group 4</option>
+												</select>
+										   </div>
+										   <div class="col-lg-3">
+										    <label>Department</label>
+												<select class="form-control" name="Department" required>
+													<option value="">Select</option>
+													<option>Department 1</option>
+													<option>Department 2</option>
+													<option>Department 3</option>
+													<option>Department 4</option>
+												</select>
+										   </div>
+										</div>
+
+									  <div class="form-group row">
+									   <div class="col-lg-3">
+										    <label>Process</label>
+												<select class="form-control" name="Process" required>
+													<option value="">Select</option>
+													<option>Process 1</option>
+													<option>Process 2</option>
+													<option>Process 3</option>
+													<option>Process 4</option>
+												</select>
+										   </div>
+									   <div class="col-lg-3">
+										    <label>Risk Type</label>
+												<select class="form-control" name="Risk_Type" required>
+													<option value="">Select</option>
+													<option>Risk Type 1</option>
+													<option>Risk Type 2</option>
+													<option>Risk Type 3</option>
+													<option>Risk Type 4</option>
+												</select>
+										   </div>
+									   <div class="col-lg-3">
+										    <label>Source of Risk</label>
+												<select class="form-control" name="Source" required>
+													<option value="">Select</option>
+													<option>Source 1</option>
+													<option>Source 2</option>
+													<option>Source 3</option>
+													<option>Source 4</option>
+												</select>
+										   </div>
+									   <div class="col-lg-3">
+										    <label>Impact Area</label>
+												<select class="form-control" name="Impact_Area" required>
+													<option value="">Select</option>
+													<option>Impact Area 1</option>
+													<option>Impact Area 2</option>
+													<option>Impact Area 3</option>
+													<option>Impact Area 4</option>
+												</select>
+										   </div>
+									  </div>
+
+
+									  <div class="form-group row">
+									   <div class="col-lg-3">
+									    <label>Date</label>
+											<input type="date" class="form-control" name="date" placeholder="" required>
+									   </div>
+									   
+										<div class="col-lg-9">
+										    <label>Description</label>
+											<input type="text" class="form-control" name="Description" placeholder="" required>
+										</div>
+									  </div>
+
+									  	<div class="form-group row">
+										   <div class="col-lg-6">
+										    <label>File uploaded</label>
+												<input type="file" class="form-control" name="file" placeholder="" required>
+										   </div>
+										   <div class="col-lg-6">
+										    <label>Risk Priority</label>
+												<select class="form-control" name="Risk_priority" required>
+													<option value="">Select</option>
+													<option>0%-25%</option>
+													<option>25%-50%</option>
+													<option>50%-75%</option>
+													<option>75%-100%</option>
+												</select>
+										   </div>
+										</div>
+
+										
+
+							  	</div>
+							 </div>
+							 <!-- end::Form Content -->
+
+							 <!-- begin::Form Content -->
+							 <!--
+							 <div class="card-body">
+									 <div id="custom-section-1">
+									 	<div class="container-full customer-header">
+									 		Assessment
+									 	</div>
+
+										<div class="form-group row">
+										   <div class="col-lg-12">
+										    <label>Severity</label>
+												
+												<div class="fv-row">
+													
+													<div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-1" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="0" checked="checked" />
+														
+														No effect</label>
+
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-2" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="2" />
+														
+														Very minor</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-3" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="4" />
+														
+														Minor</label>
+														
+														<br>
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-4" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="6" />
+														
+														Moderate</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-5" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="8" />
+														
+														High</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-6" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="severity" value="10" />
+														
+														Very high</label>
+														
+													</div>
+													
+													
+												</div>
+												
+										   </div>
+										</div>
+
+										<div class="form-group row">
+										   <div class="col-lg-12">
+										    <label>Occurance</label>
+												
+												<div class="fv-row">
+													
+													<div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-1" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="0" checked="checked" />
+														
+														No Occurance</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-2" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="2" />
+														
+														Very Rare</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-3" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="4" />
+														
+														Rare</label>
+														
+														<br>
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-4" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="6" />
+														
+														Moderate</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-5" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="8" />
+														
+														High</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-6" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="occurance" value="10" />
+														
+														Very high</label>
+														
+													</div>
+													
+													
+												</div>
+												
+										   </div>
+										</div>
+
+
+										<div class="form-group row">
+										   <div class="col-lg-12">
+										    <label>Detection</label>
+												
+												<div class="fv-row">
+													
+													<div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-1" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="0" checked="checked" />
+														
+														In place</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-2" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="2" />
+														
+														Very easy</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-3" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="4" />
+														
+														Easy</label>
+														
+														<br>
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-4" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="6" />
+														
+														Moderate</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-5" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="8" />
+														
+														Low</label>
+														
+														
+														<label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-custom-level-6" data-kt-button="true">
+														
+														<input class="btn-check" type="radio" name="detection" value="10" />
+														
+														Not possible</label>
+														
+													</div>
+													
+													
+												</div>
+												
+										   </div>
+										</div>
+
+										<div class="form-group row">
+										   <div class="col-lg-3">
+										    <label>Result: Risk Priority Number</label>
+												<input type="number" class="form-control" name="rpn_value" id="rpn_value" value="" readonly>
+												<span class="btn btn-primary rpnbutton" onclick="CalculaRPN()">Calculate RPN</span>
+										   </div>
+										</div>
+									
+
+
+									</div>
+							 </div>-->
+							 <!-- end::Form Content -->
+
+
+							 <div class="card-footer">
+								<div class="row" style="text-align: center;">
+									<div>
+										<button type="reset" class="btn btn-primary mr-2">Submit</button>
+									</div>
+								</div>
+							</div>
+							</form>
+
+
+                         <!-- Finalizar contenido -->
+						</div>
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+
+					<?php include('includes/footer.php'); ?> 
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Root-->
+
+		<!--end::Main-->
+
+
+		<?php include('includes/scrolltop.php'); ?> 
+
+		<!--begin::Javascript-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="assets/plugins/custom/leaflet/leaflet.bundle.js"></script>
+		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/widgets.bundle.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/apps/chat/chat.js"></script>
+		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+		<script src="assets/js/custom/utilities/modals/select-location.js"></script>
+		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+		<!--end::Page Custom Javascript-->
+		<script>
+		/*function CalculaRPN() {
+			//var TotalRpn = 0;
+			var Severity = $("input[type=radio][name=severity]").filter(":checked")[0];
+	        if (Severity) {
+	        	if(Severity.value != 0)
+	        	{
+	        	var FirstRpn = Severity.value;
+	        	}
+	        	else
+	        	{
+	        	var FirstRpn = 1;
+	        	}
+	            
+	        }
+
+	        var Occurance = $("input[type=radio][name=occurance]").filter(":checked")[0];
+	        if (Occurance) {
+	        	if(Occurance.value != 0)
+	        	{
+	        	var SecondRpn = FirstRpn * Occurance.value;
+	        	}else{
+	        		var SecondRpn = FirstRpn;
+	        	}          
+	        }
+
+
+	        var Detection = $("input[type=radio][name=detection]").filter(":checked")[0];
+	        if (Detection) {
+	        	if(Detection.value != 0)
+	        	{
+	        	var TotalRpn = SecondRpn * Detection.value;
+	        	}else{
+	        	var TotalRpn = SecondRpn;
+	        	}          
+	        }
+	        if(TotalRpn == 1){
+	        	TotalRpn = 0;
+	        }
+
+			document.getElementById("rpn_value").value = TotalRpn;
+		
+		}*/
+		</script>
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>

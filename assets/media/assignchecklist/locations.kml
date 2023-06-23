@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+	<Document>
+		<name>IDIOMATIC</name>
+		<atom:author>
+			<atom:name>IDIOMATIC</atom:name>
+		</atom:author>
+		<atom:link rel="related" href="https://www.idiomaticenglish.org/" />
+		<Folder>
+			<Placemark>
+				<name><![CDATA[Academia Ingles Barcelona IDIOMATIC]]></name>
+				<address><![CDATA[Av. de la Mare de Déu de Montserrat, 72, 08024 Barcelona]]></address>
+				<phoneNumber><![CDATA[934 76 55 78]]></phoneNumber>
+				<description><![CDATA[En Idiomatic ofrecemos cursos de inglés para adultos y niños en Barcelona.]]></description>
+				<Point>
+					<coordinates>41.4146854,2.1652273</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Document>
+</kml>

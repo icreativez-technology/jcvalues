@@ -1,0 +1,38 @@
+Documentation
+
+- Upload new file
+	- (DOCUMENT NO (link), REV NO, NAME (eliminar)) (OK)
+	- FORMAT NO --> DOCUMENT NO (OK)
+	- Prepared by: Select employee - Search (OK)
+	- Reviewd by: Select employee	- Search (OK)
+	- Approved by: Select employee - Search (OK)
+	- Document category: (Select document category) (OK)
+	- Upload file (Max: 10MB) (Validation) (OK)
+	- Search by DOCUMENT NO (OK)
+	- Alert (actions)
+- Update file
+	- title --> Delete (OK)
+	- Title of the document: - Document No (No edit)  (OK)
+	- Document category (Espacio y caja)* (OK)
+	- Add button (Back (alert "Quieres volver ? tus datos se eliminaran") - Update)
+	- Upload file (obligatorio)(OK)
+
+Meeting
+
+	- View list (Search by id, title or category) (OK)
+	- Meeting Update
+		- Información dentro del input (OK)
+		- Participant (nombre y apellido) (OK)
+		- Add Status (OK)
+		- S.L. (campo pequeño - number) (OK)
+		- Cambiar orden Priority - Status (OK)
+		- What más grande, resto más pequeños
+		- Mail (añadir todos los datos del meeting)(OK)
+		- Cuando esta completed -- mostar view pdf (OK)
+		- Cuando algo esta completed (edit "status de agenda" ) (OK)
+
+Empleados buscar por nombre y apellido
+cambiar fecha d/m/y
+Apply filter and Reset filter (botones pequeños)
+Cuando algo esta completed (eliminar "delete" ) (OK)
+

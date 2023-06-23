@@ -1,0 +1,433 @@
+<?php 
+session_start();
+include('includes/functions.php');		
+$_SESSION['Page_Title'] = "Quality MoC List";
+
+if($_SESSION['update_moc'])
+{
+	//alert($_SESSION['update_moc']);
+	$msg = $_SESSION['update_moc'];
+	echo "<script type='text/javascript'>alert('$msg');</script>";
+	unset($_SESSION['update_moc']);
+}
+
+/*Para comprobar el usuario y que pueda editar o no*/
+$email = $_SESSION['usuario'];
+$sql_datos_usuario = "SELECT * From Basic_Employee Where Email = '$email'";
+$result_datos_usuario = mysqli_query($con, $sql_datos_usuario);
+$conectado = mysqli_fetch_assoc($result_datos_usuario);
+
+$thisemployee = $conectado['Id_employee'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<?php include('includes/head.php'); ?> <!-- Meta tags + CSS -->
+	
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled" onload="loadCharts()">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+				<?php include('includes/aside-menu.php'); ?>
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<?php include('includes/header.php'); ?><!-- Includes Top bar and Responsive Menu -->
+					<!-- Breadcrumbs + Actions -->
+
+					<div class="row breadcrumbs">
+						<div class="col-lg-6">
+							<p><a href="/">Home</a> » <a href="/quality-moc.php">Quality MoC</a> » <?php echo $_SESSION['Page_Title']; ?></p>
+								<!-- MIGAS DE PAN -->
+						</div>
+
+						<div class="col-lg-6">
+							<div class="d-flex justify-content-end">
+								<a href="/quality-moc_add.php">
+												<button type="button" class="btn btn-light-primary me-3 topbottons">
+													New MoC
+												</button>
+											</a>
+											<a href="/quality-moc.php">
+												<button type="button" class="btn btn-light-primary me-3 topbottons">
+													<i class="bi bi-speedometer2"></i> View Dashboard
+												</button>
+											</a>				
+							</div>
+						</div>
+					</div>
+
+					<!-- End Breadcrumbs + Actions -->
+					
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="padding: 0;">
+						
+
+
+						<!--begin::Container-->
+						<div class="container-custom" id="kt_content_container">
+                        <!-- AQUI AÑADIR EL CONTENIDO  -->
+
+							<!--begin::LISTADO-->
+							<!--begin::Card body-->
+							<div class="container-custom card">
+								<!--begin::FILTROS-->
+                        	<div class="content d-flex flex-column flex-column-fluid filtros-audit" style="padding: 0;">
+								<!--begin::Container-->
+								<div class="container-full">
+                        	
+                        	<form class="form" action="includes/quality-moc_filter.php" method="post" enctype="multipart/form-data">
+							 <div class="card-body">
+							  <div class="form-group row mt-3">
+
+							  	<div class="col-lg-2">
+							   	<label class="filterlabel-j6">On behalf of:</label>
+							    <select class="form-control" name="on_behalf">
+							    <option value="blank_option"></option>
+									<?php 
+									$sql_datos_employees = "SELECT * FROM Basic_Employee";
+									$connect_data2 = mysqli_query($con, $sql_datos_employees);
+									
+									while ($result_data = mysqli_fetch_assoc($connect_data2)) {
+										if($result_data['Status'] == 'Active')
+										{						
+										?>
+											<option value="<?php echo $result_data['Id_employee']; ?>"><?php echo $result_data['First_Name']; ?> <?php echo $result_data['Last_Name']; ?></option>
+										<?php
+										}
+									}
+									?>
+								</select>
+							   </div>
+
+							   <div class="col-lg-2">
+							   	<label class="filterlabel-j6">Plant:</label>
+							    <select class="form-control" name="Id_plant" id="plant" onchange="AgregrarPlantRelacionados();">
+							    	<option value="blank_option"></option>
+									<?php 
+									$sql_data = "SELECT Id_plant, Title, Status FROM Basic_Plant";
+									$connect_data = mysqli_query($con, $sql_data);
+									while ($result_data = mysqli_fetch_assoc($connect_data)) {
+										if($result_data['Status'] == 'Active')
+										{						
+										?>
+											<option value="<?php echo $result_data['Id_plant']; ?>"><?php echo $result_data['Title']; ?></option>
+										<?php
+										}
+									}
+									?>
+								</select>
+							   </div>
+
+							   <div class="col-lg-2">
+							   	<label class="filterlabel-j6">Product Group:</label>
+							    <select class="form-control" id="product_group" name="Id_product_group">
+							    	<option value="blank_option"></option>
+									<?php 
+									$sql_data = "SELECT * FROM Basic_Product_Group";
+									$connect_data = mysqli_query($con, $sql_data);
+									while ($result_data = mysqli_fetch_assoc($connect_data)) {
+										if($result_data['Status'] == 'Active')
+										{						
+										?>
+											<option value="<?php echo $result_data['Id_product_group']; ?>"><?php echo $result_data['Title']; ?></option>
+										<?php
+										}
+									}
+									?>
+								</select>
+							   </div>
+
+							   <div class="col-lg-2">
+							   	<label class="filterlabel-j6">Department:</label>
+							    <select class="form-control" id="department" name="Id_department">
+							    	<option value="blank_option"></option>
+									<?php 
+									$sql_data = "SELECT Id_department, Department, Status FROM Basic_Department";
+									$connect_data = mysqli_query($con, $sql_data);
+									while ($result_data = mysqli_fetch_assoc($connect_data)) {
+									if($result_data['Status'] == 'Active')
+										{						
+										?>
+											<option value="<?php echo $result_data['Id_department']; ?>"><?php echo $result_data['Department']; ?></option>
+										<?php
+										}
+									}
+									?>
+								</select>
+							   </div>							  
+
+							   <div class="col-lg-2">
+							   	<label class="filterlabel-j6">MoC Type:</label>
+							    <select class="form-control" name="moc_type">
+							    	<option value="blank_option"></option>
+									<?php 
+									$sql_data = "SELECT * FROM Quality_MoC_Type";
+									$connect_data = mysqli_query($con, $sql_data);
+									
+									while ($result_data = mysqli_fetch_assoc($connect_data)) {
+						
+										?>
+											<option value="<?php echo $result_data['Id_quality_moc_type']; ?>"><?php echo $result_data['Title']; ?></option>
+										<?php
+										
+									}
+									?>
+								</select>
+							   </div>
+
+							   <div class="col-lg-2">
+							   	<label class="filterlabel-j6">Approval:</label>
+							    <select class="form-control" name="approval">
+									<option value="blank_option"></option>
+									<option value="Approved">Approved</option>
+									<option value="Open">Open</option>
+									<option value="Rejected">Rejected</option>
+								</select>
+							   </div>
+
+							  </div>
+							  <div class="form-group row mt-3 filterbott">
+								    <input type="submit" value="Apply Filter">
+								    <input type="reset" value="Reset Filter" onClick="window.location.href=window.location.href">
+							   </div>
+							</div>
+							
+
+							</form>
+							</div>
+						</div>
+                        	<!--end::FILTROS-->
+
+
+
+								<div class="card-body pt-0 table-responsive">
+									<!--begin::Table-->
+									<table class="table align-middle table-row-dashed fs-6 gy-5 gx-5" id="kt_subscriptions_table">
+										<!--begin::Table head-->
+										<thead>
+											<!--begin::Table row-->
+											<tr class="text-start text-muted text-uppercase gs-0">
+												<th class="min-w-25px">U. ID</th>
+												<th class="min-w-50px">On Behalf of</th>
+												<th class="min-w-50px">Plant</th>
+												<th class="min-w-50px">Prod. Group</th>
+												<th class="min-w-50px">Department</th>
+												<th class="min-w-50px">MoC Type</th>
+												<th class="min-w-50px">Approval</th>
+												<th class="text-end min-w-50px">Action</th>
+											</tr>
+											<!--end::Table row-->
+										</thead>
+										<!--end::Table head-->
+										<?php
+
+										if($_SESSION["moc_data"]){
+											$sql_data = $_SESSION["moc_data"];
+											unset($_SESSION['moc_data']);
+										}else{
+											$sql_data = "SELECT * FROM Quality_MoC";
+										}
+
+										
+										$connect_data = mysqli_query($con, $sql_data);
+
+							
+												
+										while ($result_moc = mysqli_fetch_assoc($connect_data)) {
+
+
+										$sql_datos_employees = "SELECT * FROM Basic_Employee WHERE Id_employee = '$result_moc[Id_employee]'";
+										$connect_data2 = mysqli_query($con, $sql_datos_employees);
+										$result_data = mysqli_fetch_assoc($connect_data2);
+
+										?>
+										<!--begin::Table body-->
+										<tbody class="text-gray-600 fw-bold">
+											<tr>
+												<td><?php echo $result_moc['Id_quality_moc']; ?></td>
+												<td><?php echo $result_data['First_Name']; ?> <?php echo $result_data['Last_Name']; ?></td>
+												<td>
+													<?php 
+													 $sql_data_plants = "SELECT Id_plant, Title FROM Basic_Plant WHERE Id_plant = '$result_moc[Id_plant]'";
+													 $connect_data_plants = mysqli_query($con, $sql_data_plants);
+													 $result_data_plants = mysqli_fetch_assoc($connect_data_plants);
+													?>
+													<?php echo $result_data_plants['Title']; ?>
+												</td>
+												<td>
+													<?php 
+													 $sql_data_pg = "SELECT Id_product_group, Title FROM Basic_Product_Group WHERE Id_product_group = '$result_moc[Id_product_group]'";
+													 $connect_data_pg = mysqli_query($con, $sql_data_pg);
+													 $result_data_pg = mysqli_fetch_assoc($connect_data_pg);
+													?>
+													<?php echo $result_data_pg['Title']; ?>
+												</td>
+												<td>
+													<?php 
+													 $sql_data_dep = "SELECT Id_department, Department FROM Basic_Department WHERE Id_department = '$result_moc[Id_department]'";
+													 $connect_data_dep = mysqli_query($con, $sql_data_dep);
+													 $result_data_dep = mysqli_fetch_assoc($connect_data_dep);
+													?>
+													<?php echo $result_data_dep['Department']; ?>
+												</td>
+												<td>
+													<?php 
+													 $sql_data_type = "SELECT * FROM Quality_MoC_Type WHERE Id_quality_moc_type = '$result_moc[Id_quality_moc_type]'";
+													 $connect_data_type = mysqli_query($con, $sql_data_type);
+													 $result_data_type = mysqli_fetch_assoc($connect_data_type);
+													?>
+													<?php echo $result_data_type['Title']; ?>
+												</td>
+												
+												<?php if($result_moc['Decision'] == 'Approved'){ ?>
+													<td><div class="badge badge-light-success">Approved</div></td>
+												<?php } ?>
+												<?php if($result_moc['Decision'] == 'Open'){ ?>
+													<td><div class="badge badge-light-warning">Open</div></td>
+												<?php } ?>
+												<?php if($result_moc['Decision'] == 'Rejected'){ ?>
+													<td><div class="badge badge-light-danger">Rejected</div></td>
+												<?php } ?>
+												
+												<td class="text-end">
+													<a href="/quality-moc_view.php?pg_id=<?php echo $result_moc['Id_quality_moc']; ?>"><i class="bi bi-eye-fill" style="padding-right: 4px;"></i></a>
+													<?php if($result_moc['Decision'] == 'Open'){ ?>
+														<?php if($result_moc['Id_employee'] == $thisemployee){ ?>
+															<a href="/quality-moc_details.php?pg_id=<?php echo $result_moc['Id_quality_moc']; ?>"><i class="bi bi-pencil" style="padding-right: 4px;"></i></a>
+														<?php } ?>
+													<?php } ?>
+													<a href="/quality-moc_actions.php?pg_id=<?php echo $result_moc['Id_quality_moc']; ?>"><i class="bi bi-card-checklist" style="padding-right: 4px;"></i></a>
+													<?php if($result_moc['Decision'] == 'Open'){ ?>
+														<?php if($result_moc['Id_employee'] == $thisemployee){ ?>
+													<a href="/quality-moc_delete.php?pg_id=<?php echo $result_moc['Id_quality_moc']; ?>"><i class="bi bi-trash" style="padding-right: 4px;"></i></a>
+														<?php } ?>
+													<?php }else{ ?>
+														<?php if($result_moc['Decision'] != 'Rejected'){ ?>
+														
+
+															<?php
+															$flag_canseePDF = 0;
+
+															if($result_moc['Id_employee'] == $thisemployee){
+																$flag_canseePDF = 1;
+															}
+															else
+															{
+															/*Comprobar si forma parte de los Team Member O es el On behalf of para ver PDF*/
+															$sql_data_TM = "SELECT * FROM Quality_MoC_TeamMembers WHERE Id_quality_moc = '$result_moc[Id_quality_moc]'";
+															$connect_data_TM = mysqli_query($con, $sql_data_TM);
+															while ($result_data_moc_tm = mysqli_fetch_assoc($connect_data_TM)) 
+																{
+																	$sql_user_TM = "SELECT * FROM Basic_Employee WHERE Id_employee = '$result_data_moc_tm[Id_employee]'";
+																	$connect_user_TM = mysqli_query($con, $sql_user_TM);
+																	$result_user_TM = mysqli_fetch_assoc($connect_user_TM);
+
+																	if($result_user_TM['Id_employee'] == $thisemployee)
+																	{
+																	$flag_canseePDF = 1;
+																	}
+																}
+															}
+
+															?>
+															<?php 
+															if($flag_canseePDF == 1)
+															{
+															?>
+																<a href="/includes/quality_moc_pdf.php?id_met=<?php echo $result_moc['Id_quality_moc']; ?>"><i class="bi bi-file-earmark-pdf" style="padding-right: 4px;"></i></a>
+															<?php } ?>
+
+
+
+														<?php } ?>
+													<?php } ?>
+
+												</td>
+												<!--end::Action=-->
+
+												<?php } ?>
+												
+											</tr>
+											
+											
+										</tbody>
+										<!--end::Table body-->
+									</table>
+									<!--end::Table-->
+								</div>
+							</div>
+								<!--end::Card body-->
+							<!--end::LISTADO-->
+
+                         <!-- Finalizar contenido -->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+
+					<?php include('includes/footer.php'); ?> 
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Root-->
+
+		<!--end::Main-->
+
+
+		<?php include('includes/scrolltop.php'); ?> 
+
+		<!--begin::Javascript-->
+
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="assets/plugins/custom/leaflet/leaflet.bundle.js"></script>
+		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/widgets.bundle.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/apps/chat/chat.js"></script>
+		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+		<script src="assets/js/custom/utilities/modals/select-location.js"></script>
+		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+		<script>
+		function AgregrarPlantRelacionados() {
+			var result = document.getElementById("plant").value;
+			
+			/*Product Group*/
+			$("<option>").load('includes/inputs-dinamicos-pg-plant_viewlist.php?pg_id='+result, function() {
+					$('#product_group option').remove();
+					//alert('includes/inputs-dinamicos-pg-plant.php?pg_id='+result);
+					$("#product_group").append($(this).html());
+			});
+
+			/*Department*/
+			$("<option>").load('includes/inputs-dinamicos-department-plant_viewlist.php?pg_id='+result, function() {
+					$('#department option').remove();
+					//alert('includes/inputs-dinamicos-pg-plant.php?pg_id='+result);
+					$("#department").append($(this).html());
+			});
+		}
+		</script>
+		<!--end::Page Custom Javascript-->
+
+		<!-- BUSCADOR SEARCH PARA: MoC -->
+		<script src="JS/buscar-quality-moc-viewlist.js"></script>
+		<!-- FIN BUSCADOR SEARCH JS -->
+
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>

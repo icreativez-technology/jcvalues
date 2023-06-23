@@ -1,0 +1,21 @@
+
+ /*
+This stylesheet protects the form to edit and submit.
+It will change the form to view only option.
+ */
+    input, select, textarea, button[type=submit], input[type=checkbox], input[type=checkbox]:checked:before{
+        pointer-events: none;
+    }
+    .form-control, .list-remove{
+        pointer-events: none;
+        background-color: #F3F6F9;
+    }
+    input[type=checkbox].form-check.input, input[type=checkbox]:checked:before{
+        background-color: #F3F6F9;
+    }
+    input.form-control, select.form-control, textarea.form-control{
+        background-color: #F3F6F9;
+    }
+    button[type=submit], input[type=submit]{
+     display: none;
+    }

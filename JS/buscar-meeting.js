@@ -1,0 +1,24 @@
+$(obtener_registros());
+function obtener_registros(productos) {
+  const role = $("#role").val();
+  const empId = $("#empId").val();
+  $.ajax({
+    url: "busqueda-meeting.php",
+    type: "POST",
+    dataType: "html",
+    data: { productos: productos, role: role, empId: empId },
+  }).done(function (resultado) {
+    $("#result-busqueda").html(resultado);
+  });
+}
+
+$(document).on("keyup", "#termino", function () {
+  var valorBusqueda = $(this).val();
+  if (valorBusqueda != "") {
+    obtener_registros(valorBusqueda);
+    $("#result-busqueda").next().hide();
+  } else {
+    obtener_registros();
+    $("#result-busqueda").next().show();
+  }
+});

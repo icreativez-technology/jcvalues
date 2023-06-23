@@ -1,0 +1,288 @@
+.breadcrumbs p{
+margin-bottom: 0 !important;
+}
+.breadcrumbs{
+	padding: 4px 10px;
+	background-color: #ea554e;
+	background-size: auto 100%;
+	align-items: center;
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+.breadcrumbs p{
+color:  white !important;
+}
+.breadcrumbs p a{
+color:  #f2f2f2 !important;
+}
+.breadcrumbs p a:hover{
+color:  #2a0200 !important;
+}
+.topbottons{
+	padding: 3px 9px !important;
+	font-size: 1rem;
+}
+.container-custom{
+	margin-top: 10px;
+ max-width: 1800px;
+}
+.container-full{
+	max-width:  100%;
+}
+.mt-5-custom{
+	margin-top: 0;
+}
+.logo_big_dqms{
+	max-width: 120px;
+}
+.form-group div{
+ margin-top: 2px;
+}
+.fullbutton{
+	text-align: center;
+	width: 100%;
+	background-color: #E8ECEF !important;
+	padding: 4px 2px !important;
+	color: black !important;
+	border: 0px;
+	transition-duration: 0.4s;
+}
+.fullbutton:hover{
+	background-color: #E1261C !important;
+	color: white !important;
+}
+.filtros-audit .row>*{
+padding-left: 2px !important;
+padding-right: 2px !important;
+}
+
+
+
+/*Responsive*/
+
+/*Tablet & Mobile*/
+@media (max-width: 1024px) 
+{
+.hidde-responsive-j6
+{
+	display: none;
+}
+}
+/*Mobile only*/
+@media (max-width: 768px) 
+{
+
+}
+.custom-search-nz{
+
+}
+.menu-icon i{
+ color: black !important;
+ transition-duration: 0.25s;
+}
+.menu-icon i:hover{
+ color: #de1d13 !important;
+}
+.btn-primary:hover{
+	background-color: black !important;
+}
+.donut-chart-j6{
+	width: 100% !important; 
+	height: 380px !important;
+}
+.customer-header{
+	background-color: #E1261C;
+	color: white;
+	font-size: 15px;
+	padding: 5px 1%;
+	
+}
+.margincustom-complaint{
+	margin-top: 20px;
+}
+.btn-custom-level-1.active{
+	border-color: #02c122;
+	background-color: #02c122;
+}
+.btn-custom-level-2.active{
+	border-color: #5eab19;
+	background-color: #5eab19;
+}
+.btn-custom-level-3.active{
+	border-color: #e4ec14;
+	background-color: #e4ec14;
+}
+.btn-custom-level-4.active{
+	border-color: #ec8914;
+	background-color: #ec8914;
+}
+.btn-custom-level-5.active{
+	border-color: #ec4214;
+	background-color: #ec4214;
+}
+.btn-custom-level-6.active{
+	border-color: #c11111;
+	background-color: #c11111;
+}
+.btn-custom-level-1:hover{
+	border-color: #02c122;
+	background-color: #02c122;
+}
+.btn-custom-level-2:hover{
+	border-color: #5eab19;
+	background-color: #5eab19;
+}
+.btn-custom-level-3:hover{
+	border-color: #e4ec14;
+	background-color: #e4ec14;
+}
+.btn-custom-level-4:hover{
+	border-color: #ec8914;
+	background-color: #ec8914;
+}
+.btn-custom-level-5:hover{
+	border-color: #ec4214;
+	background-color: #ec4214;
+}
+.btn-custom-level-6:hover{
+	border-color: #c11111;
+	background-color: #c11111;
+}
+.rpnbutton{
+	width: 100%;
+}
+.filterbott input{
+	max-width: 50%;
+}
+/*Risk Assesment CSS*/
+.impact-Minor{
+	color: #006cff !important;
+}
+.impact-Moderate{
+	color: #10a22f !important;
+}
+.impact-Major{
+	color: #7b1bb8 !important;
+}
+.impact-Critical{
+	color: #c31212 !important;
+}
+
+.status-Identified{
+	color: #646464 !important;
+}
+.status-In.Review{
+	color: #d26800 !important;
+}
+.status-Agreed{
+	color: #09bd16 !important;
+}
+.status-Rejected{
+	color: #bd0909 !important;
+}
+.matrix-danger{
+	color: white !important;
+	background-color: #d81a1a !important;
+}
+.matrix-warning{
+	color: white !important;
+	background-color: #ff9000 !important;
+}
+.matrix-good{
+	color: white !important;
+	background-color: #09BD16 !important;
+}
+.matrix-Minor:hover{
+	background-color: #006cff !important;
+}
+.matrix-Moderate:hover{
+	background-color: #10a22f !important;
+}
+.matrix-Major:hover{
+	background-color: #7b1bb8 !important;
+}
+.matrix-Critical:hover{
+	background-color: #c31212 !important;
+}
+.matrix{
+	transition-duration: 0.5s;
+	cursor: pointer;
+}
+.dqmslogo{
+	max-width: 55px;
+}
+.headermenucustom{
+	width: 100%;
+}
+@media (max-width: 930px) 
+{
+	.dqmslogo{
+		max-width: 45px;
+	}
+	.matrixbox .table.gy-5 td, .matrixbox .table.gy-5 th{
+	 padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+	}
+	.percentcustom{
+		font-size: 8px !important;
+	}
+	.matrixbox{
+		padding: 2px !important;
+	}
+}
+
+.active-nom-card{
+	display: block !important;
+}
+.nom-card{
+	display: none;
+}
+.table.gy-5 th{
+color:  black;
+}
+.bg-aside{
+	background-color: #e7e7e7 !important;
+}
+.filterbott input
+{
+	background-color: #c83932 !important;
+	color: white !important;
+	border: 2px solid #F3F6F9 !important;
+	border-radius: 4px !important;
+	transition-duration: 0.1s;
+}
+.filterbott input:hover
+{
+	background-color: #a71e17 !important;
+}
+.text-end a:hover .bi{
+	color: #E1261C !important;
+}
+.card-body .table thead{
+	background-color: #ededed;
+}
+.form-group label{
+	font-size: 12px;
+    font-weight: 600;
+    color: #009ef7;
+}
+.changefile{
+	cursor: pointer;
+}
+select{
+	cursor: pointer;
+}
+.legend-box{
+	margin-bottom: 10px;
+}
+/*--- CSS After Color Breakdown 01/09/22 ----*/
+.banner-inicio{
+	background-color: #de1d13;
+	background-size: auto 100%;
+}
+@media (max-width: 1080px) 
+{
+	.min-w-600px{
+		min-width: 250px !important;
+	}
+}
